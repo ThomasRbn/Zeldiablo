@@ -55,12 +55,6 @@ public class ArkanoidJeu implements Jeu {
         // pas d'initialisation particuliere
     }
 
-    @Override
-    public boolean etreFini() {
-        // le jeu ne s'arrete jamais
-        return false;
-    }
-
 
     /*#######################################
     # GETTER
