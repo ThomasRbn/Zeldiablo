@@ -7,7 +7,7 @@ public class MainLaby {
 
 		int width = 800;
 		int height = 600;
-		int pFPS = 20;
+		int pFPS = 10;
 
 		// creation des objets
 //		LabyJeu jeuLaby = new LabyJeu("source/laby0.txt");
