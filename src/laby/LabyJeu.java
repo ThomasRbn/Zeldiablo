@@ -70,6 +70,12 @@ public class LabyJeu implements Jeu {
 			}
 		}
 
+		if(labyrinthe.getHeros().etrePresent(labyrinthe.getAmulette().getX(), labyrinthe.getAmulette().getY())){
+			labyrinthe.getHeros().setPossedeAmulette(true);
+		}
+
+
+
 		CYCLE++;
 	}
 

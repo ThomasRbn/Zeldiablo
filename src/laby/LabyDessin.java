@@ -40,6 +40,23 @@ public class LabyDessin implements DessinJeu {
 			ghc.fillOval(m.getX() * TAILLE, m.getY() * TAILLE, TAILLE, TAILLE);
 		}
 
+		if (laby.getHeros().getPossedeAmulette()){
+			//Disparition de l'amulette
+			ghc.clearRect(laby.getAmulette().getX() * TAILLE, laby.getAmulette().getY() * TAILLE, TAILLE, TAILLE);
+
+			//Création héros
+			ghc.setFill(Color.BLUE);
+			ghc.fillOval(laby.getHeros().getX() * TAILLE, laby.getHeros().getY() * TAILLE, TAILLE, TAILLE);
+
+			//Création petite amulette
+			ghc.setFill(Color.YELLOW);
+			ghc.fillOval(laby.getHeros().getX() * TAILLE, laby.getHeros().getY() * TAILLE, TAILLE/4., TAILLE/4.);
+
+			//Bordure amulette
+			ghc.setFill(Color.BLACK);
+			ghc.strokeOval(laby.getHeros().getX() * TAILLE, laby.getHeros().getY() * TAILLE, TAILLE/4., TAILLE/4.);
+		}
+
 
 	}
 }
