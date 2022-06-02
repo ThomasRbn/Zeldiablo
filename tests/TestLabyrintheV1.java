@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TestLabyrintheV1 {
 
+	//Test de la génération du labyrinthe
 	@Test
 	public void test01_generationlabyrinthe() throws Exception {
 		LabyJeu laby = new LabyJeu("source/laby0.txt");
@@ -17,6 +18,7 @@ class TestLabyrintheV1 {
 		assertEquals(5, laby.getLengthY());
 	}
 
+	//Test de la génération du héros
 	@Test
 	public void test02_generationHeros() throws Exception {
 
@@ -28,6 +30,7 @@ class TestLabyrintheV1 {
 
 	}
 
+	//Test du déplacement du personnage vers le haut
 	@Test
 	public void test03_deplacerPerso_HAUT() throws Exception{
 
@@ -41,6 +44,7 @@ class TestLabyrintheV1 {
 
 	}
 
+	//Test du déplacement du personnage vers la droite
 	@Test
 	public void test04_deplacerPerso_DROITE() throws Exception{
 
@@ -54,6 +58,7 @@ class TestLabyrintheV1 {
 
 	}
 
+	//Test du déplacement du personnage vers le bas
 	@Test
 	public void test05_deplacerPerso_BAS() throws Exception{
 
@@ -67,6 +72,7 @@ class TestLabyrintheV1 {
 
 	}
 
+	//Test du déplacement du personnage vers la gauche
 	@Test
 	public void test06_deplacerPerso_Gauche() throws Exception{
 
