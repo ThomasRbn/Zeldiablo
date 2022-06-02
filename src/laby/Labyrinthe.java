@@ -169,7 +169,7 @@ public class Labyrinthe {
 	 */
 	public void deplacerPerso(String action) {
 		// case courante
-		int[] courante = {this.heros.x, this.heros.y};
+		int[] courante = {this.heros.getX(), this.heros.getY()};
 
 		// calcule case suivante
 		int[] suivante = getSuivant(courante[0], courante[1], action);
@@ -177,8 +177,8 @@ public class Labyrinthe {
 		// si c'est pas un mur, on effectue le deplacement
 		if (!this.murs[suivante[0]][suivante[1]]) {
 			// on met a jour personnage
-			this.heros.x = suivante[0];
-			this.heros.y = suivante[1];
+			this.heros.setX(suivante[0]);
+			this.heros.setY(suivante[1]);
 		}
 	}
 }
