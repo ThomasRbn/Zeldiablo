@@ -1,9 +1,11 @@
 package laby;
 
+import laby.ennemis.Monstre;
 import moteurJeu.Clavier;
 import moteurJeu.Jeu;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class LabyJeu implements Jeu {
 	private final Labyrinthe labyrinthe;
@@ -32,6 +34,10 @@ public class LabyJeu implements Jeu {
 
 	public Heros getHeros(){
 		return labyrinthe.getHeros();
+	}
+
+	public ArrayList<Monstre> getMonstres(){
+		return labyrinthe.getMonstres();
 	}
 
 	@Override
