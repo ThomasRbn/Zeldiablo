@@ -1,8 +1,12 @@
 package laby;
 
+import laby.ennemis.Monstre;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * classe labyrinthe. represente un labyrinthe avec
@@ -18,6 +22,8 @@ public class Labyrinthe {
 	public static final char HEROS = 'H';
 	public static final char VIDE = '.';
 
+	public static final char MONSTRE = 'M';
+
 	/**
 	 * constantes actions possibles
 	 */
@@ -25,6 +31,8 @@ public class Labyrinthe {
 	public static final String BAS = "Bas";
 	public static final String GAUCHE = "Gauche";
 	public static final String DROITE = "Droite";
+
+	public static final String[] DEPLACEMENT = new String[]{HAUT, BAS, GAUCHE, DROITE};
 
 	/**
 	 * attribut du personnage
@@ -36,9 +44,49 @@ public class Labyrinthe {
 	 */
 	public boolean[][] murs;
 
-	// ##################################
+	public ArrayList<Monstre> monstres;
+
+
 	// GETTER
-	// ##################################
+
+	/**
+	 * return taille selon Y
+	 *
+	 * @return nombre de lignes
+	 */
+	public int getLengthY() {
+		return murs[0].length;
+	}
+
+	/**
+	 * return taille selon X
+	 *
+	 * @return nombre de colonnes
+	 */
+	public int getLength() {
+		return murs.length;
+	}
+
+	/**
+	 * return mur en (i,j)
+	 *
+	 * @param x colonne
+	 * @param y ligne
+	 * @return vrai si c'est un mur, faux sinon
+	 */
+	public boolean getMur(int x, int y) {
+		return this.murs[x][y];
+	}
+
+	public ArrayList<Monstre> getMonstres() {
+		return monstres;
+	}
+
+	public Heros getHeros() {
+		return heros;
+	}
+
+	//CONSTRUCTEUR
 
 	/**
 	 * charge le labyrinthe
@@ -60,6 +108,7 @@ public class Labyrinthe {
 		// creation labyrinthe vide
 		this.murs = new boolean[nbColonnes][nbLignes];
 		this.heros = null;
+		this.monstres = new ArrayList<>();
 
 		// lecture des cases
 		String ligne = bfRead.readLine();
@@ -77,12 +126,19 @@ public class Labyrinthe {
 					case MUR:
 						this.murs[colonne][numeroLigne] = true;
 						break;
+
 					case VIDE:
 						this.murs[colonne][numeroLigne] = false;
 						break;
+
 					case HEROS:
 						this.murs[colonne][numeroLigne] = false;
 						this.heros = new Heros(colonne, numeroLigne);
+						break;
+
+					case MONSTRE:
+						this.murs[colonne][numeroLigne] = false;
+						this.monstres.add(new Monstre(colonne, numeroLigne));
 						break;
 
 					default:
@@ -98,6 +154,8 @@ public class Labyrinthe {
 		// ferme fichier
 		bfRead.close();
 	}
+
+	//MÉTHODES
 
 	/**
 	 * retourne la case suivante selon une actions
@@ -128,40 +186,6 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * return taille selon Y
-	 *
-	 * @return nombre de lignes
-	 */
-	public int getLengthY() {
-		return murs[0].length;
-	}
-
-	/**
-	 * return taille selon X
-	 *
-	 * @return nombre de colonnes
-	 */
-	public int getLength() {
-		return murs.length;
-	}
-
-	/**
-	 * return mur en (i,j)
-	 *
-	 * @param x colonne
-	 * @param y ligne
-	 * @return vrai si c'est un mur, faux sinon
-	 */
-	public boolean getMur(int x, int y) {
-		// utilise le tableau de boolean
-		return this.murs[x][y];
-	}
-
-	public Heros getHeros() {
-		return heros;
-	}
-
-	/**
 	 * deplace le personnage en fonction de l'action.
 	 * gere la collision avec les murs
 	 *
@@ -176,9 +200,24 @@ public class Labyrinthe {
 
 		// si c'est pas un mur, on effectue le deplacement
 		if (!this.murs[suivante[0]][suivante[1]]) {
-			// on met a jour personnage
 			this.heros.setX(suivante[0]);
 			this.heros.setY(suivante[1]);
+		}
+	}
+
+	/**
+	 * Méthode qui déplace le monstre e dans une direction aléatoire
+	 * @param e monstre à déplacer
+	 */
+	public void deplacerMonstre(Monstre e){
+		Random random = new Random();
+		String direction = Labyrinthe.DEPLACEMENT[random.nextInt(4)];
+
+		int[] suivante = Labyrinthe.getSuivant(e.getX(), e.getY(), direction);
+
+		if (!this.murs[suivante[0]][suivante[1]] && !heros.etrePresent(suivante[0], suivante[1])) {
+			e.setX(suivante[0]);
+			e.setY(suivante[1]);
 		}
 	}
 }

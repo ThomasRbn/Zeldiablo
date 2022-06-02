@@ -11,8 +11,7 @@ public class MainLaby {
 
 		// creation des objets
 //		LabyJeu jeuLaby = new LabyJeu("source/laby0.txt");
-//		LabyJeu jeuLaby = new LabyJeu("source/laby1.txt");
-		LabyJeu jeuLaby = new LabyJeu("source/laby2.txt");
+		LabyJeu jeuLaby = new LabyJeu("source/V2/labyMonstre.txt");
 
 		LabyDessin dessinLaby = new LabyDessin();
 
