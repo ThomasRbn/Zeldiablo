@@ -4,7 +4,7 @@ package laby;
 /**
  * gere un personnage situe en x,y
  */
-public class Perso {
+public class Heros {
 
     /**
      * position du personnage
@@ -17,7 +17,7 @@ public class Perso {
      * @param dx position selon x
      * @param dy position selon y
      */
-    public Perso(int dx, int dy) {
+    public Heros(int dx, int dy) {
         this.x = dx;
         this.y = dy;
     }
