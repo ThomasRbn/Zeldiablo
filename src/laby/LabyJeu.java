@@ -34,16 +34,24 @@ public class LabyJeu implements Jeu {
 		return labyrinthe.getMur(x, y);
 	}
 
-	public Heros getHeros(){
+	public Heros getHeros() {
 		return labyrinthe.getHeros();
 	}
 
-	public ArrayList<Monstre> getMonstres(){
+	public ArrayList<Monstre> getMonstres() {
 		return labyrinthe.getMonstres();
 	}
 
-	public Amulette getAmulette(){
+	public Amulette getAmulette() {
 		return labyrinthe.getAmulette();
+	}
+
+	public int[] getSortie(){
+		return labyrinthe.getSortie();
+	}
+
+	public boolean getSortieOuverte() {
+		return labyrinthe.getSortieOuverte();
 	}
 
 	@Override
@@ -64,21 +72,19 @@ public class LabyJeu implements Jeu {
 			labyrinthe.deplacerPerso(Labyrinthe.GAUCHE);
 		}
 
-		if (CYCLE%5 == 0){
-			for (Monstre m : labyrinthe.getMonstres()){
+		if (CYCLE % 5 == 0) {
+			for (Monstre m : labyrinthe.getMonstres()) {
 				labyrinthe.deplacerMonstre(m);
 			}
 		}
 
-		if(labyrinthe.getHeros().etrePresent(labyrinthe.getAmulette().getX(), labyrinthe.getAmulette().getY())){
+		if (labyrinthe.getHeros().etrePresent(labyrinthe.getAmulette().getX(), labyrinthe.getAmulette().getY())) {
 			labyrinthe.getHeros().setPossedeAmulette(true);
+			labyrinthe.setSortieOuverte(true);
 		}
-
-
 
 		CYCLE++;
 	}
-
 
 
 	@Override

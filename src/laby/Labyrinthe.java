@@ -31,13 +31,15 @@ public class Labyrinthe {
 	public static final String BAS = "Bas";
 	public static final String GAUCHE = "Gauche";
 	public static final String DROITE = "Droite";
-
 	public static final String[] DEPLACEMENT = new String[]{HAUT, BAS, GAUCHE, DROITE};
 
-	public Heros heros;
-	public boolean[][] murs;
-	public ArrayList<Monstre> monstres;
-	public Amulette amulette;
+	private Heros heros;
+	private boolean[][] murs;
+	private ArrayList<Monstre> monstres;
+	private Amulette amulette;
+	private int[] sortie;
+	private boolean sortieOuverte;
+
 
 
 	// GETTER
@@ -63,6 +65,7 @@ public class Labyrinthe {
 		this.murs = new boolean[nbColonnes][nbLignes];
 		this.heros = null;
 		this.monstres = new ArrayList<>();
+		this.sortieOuverte = false;
 
 		// lecture des cases
 		String ligne = bfRead.readLine();
@@ -88,6 +91,7 @@ public class Labyrinthe {
 					case HEROS:
 						this.murs[colonne][numeroLigne] = false;
 						this.heros = new Heros(colonne, numeroLigne);
+						this.sortie = new int[]{colonne, numeroLigne};
 						break;
 
 					case MONSTRE:
@@ -185,6 +189,18 @@ public class Labyrinthe {
 
 	public Amulette getAmulette() {
 		return amulette;
+	}
+
+	public int[] getSortie() {
+		return sortie;
+	}
+
+	public boolean getSortieOuverte() {
+		return sortieOuverte;
+	}
+
+	public void setSortieOuverte(boolean sortieOuverte) {
+		this.sortieOuverte = sortieOuverte;
 	}
 
 	/**
