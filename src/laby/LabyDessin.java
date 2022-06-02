@@ -6,9 +6,9 @@ import laby.ennemis.Monstre;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 
-public class LabyDessin implements DessinJeu {
+import static laby.Constantes.TAILLE;
 
-	public final static int TAILLE = 35;
+public class LabyDessin implements DessinJeu {
 
 	@Override
 	public void dessinerJeu(Jeu jeu, Canvas canvas) {
