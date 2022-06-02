@@ -42,6 +42,10 @@ public class LabyJeu implements Jeu {
 		return labyrinthe.getMonstres();
 	}
 
+	public Amulette getAmulette(){
+		return labyrinthe.getAmulette();
+	}
+
 	@Override
 	public void update(double secondes, Clavier clavier) {
 		if (clavier.haut) {

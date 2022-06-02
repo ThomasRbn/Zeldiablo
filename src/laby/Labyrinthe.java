@@ -37,7 +37,7 @@ public class Labyrinthe {
 	public Heros heros;
 	public boolean[][] murs;
 	public ArrayList<Monstre> monstres;
-	public Amulette joyau;
+	public Amulette amulette;
 
 
 	// GETTER
@@ -97,7 +97,7 @@ public class Labyrinthe {
 
 					case AMULETTE:
 						this.murs[colonne][numeroLigne] = false;
-						this.joyau = new Amulette(colonne, numeroLigne);
+						this.amulette = new Amulette(colonne, numeroLigne);
 						break;
 
 					default:
@@ -181,6 +181,10 @@ public class Labyrinthe {
 
 	public Heros getHeros() {
 		return heros;
+	}
+
+	public Amulette getAmulette() {
+		return amulette;
 	}
 
 	/**

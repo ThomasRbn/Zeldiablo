@@ -26,6 +26,10 @@ public class LabyDessin implements DessinJeu {
 			}
 		}
 
+		//Génération Amulette
+		ghc.setFill(Color.YELLOW);
+		ghc.fillOval(laby.getAmulette().getX() * TAILLE, laby.getAmulette().getY() * TAILLE, TAILLE, TAILLE);
+
 		//Génération Héros
 		ghc.setFill(Color.BLUE);
 		ghc.fillOval(laby.getHeros().getX() * TAILLE, laby.getHeros().getY() * TAILLE, TAILLE, TAILLE);
