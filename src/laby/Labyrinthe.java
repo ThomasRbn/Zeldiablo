@@ -258,4 +258,8 @@ public class Labyrinthe {
 			e.setY(suivante[1]);
 		}
 	}
+
+	public boolean jeuTermine(){
+		return heros.etrePresent(sortie[0], sortie[1]) && sortieOuverte;
+	}
 }

@@ -56,6 +56,9 @@ public class LabyJeu implements Jeu {
 
 	@Override
 	public void update(double secondes, Clavier clavier) {
+		if (labyrinthe.jeuTermine())
+			return;
+
 		if (clavier.haut) {
 			labyrinthe.deplacerPerso(Labyrinthe.HAUT);
 		}
