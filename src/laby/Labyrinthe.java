@@ -21,8 +21,8 @@ public class Labyrinthe {
 	public static final char MUR = 'X';
 	public static final char HEROS = 'H';
 	public static final char VIDE = '.';
-
 	public static final char MONSTRE = 'M';
+	public static final char AMULETTE = 'A';
 
 	/**
 	 * constantes actions possibles
@@ -34,17 +34,10 @@ public class Labyrinthe {
 
 	public static final String[] DEPLACEMENT = new String[]{HAUT, BAS, GAUCHE, DROITE};
 
-	/**
-	 * attribut du personnage
-	 */
 	public Heros heros;
-
-	/**
-	 * les murs du labyrinthe
-	 */
 	public boolean[][] murs;
-
 	public ArrayList<Monstre> monstres;
+	public Amulette joyau;
 
 
 	// GETTER
@@ -100,6 +93,11 @@ public class Labyrinthe {
 					case MONSTRE:
 						this.murs[colonne][numeroLigne] = false;
 						this.monstres.add(new Monstre(colonne, numeroLigne));
+						break;
+
+					case AMULETTE:
+						this.murs[colonne][numeroLigne] = false;
+						this.joyau = new Amulette(colonne, numeroLigne);
 						break;
 
 					default:
@@ -222,6 +220,16 @@ public class Labyrinthe {
 	public void deplacerMonstre(Monstre e) {
 		Random random = new Random();
 		String direction = Labyrinthe.DEPLACEMENT[random.nextInt(4)];
+
+		int[] suivante = Labyrinthe.getSuivant(e.getX(), e.getY(), direction);
+
+		if (!this.murs[suivante[0]][suivante[1]] && !heros.etrePresent(suivante[0], suivante[1])) {
+			e.setX(suivante[0]);
+			e.setY(suivante[1]);
+		}
+	}
+
+	public void deplacerMonstre(Monstre e, String direction) {
 
 		int[] suivante = Labyrinthe.getSuivant(e.getX(), e.getY(), direction);
 
