@@ -2,6 +2,16 @@ package laby;
 
 public class Heros extends Entite{
 
+    private boolean possedeAmulette;
+
+    public boolean isPossedeAmulette() {
+        return possedeAmulette;
+    }
+
+    public void setPossedeAmulette(boolean possedeAmulette) {
+        this.possedeAmulette = possedeAmulette;
+    }
+
     /**
      * constructeur
      *
@@ -10,6 +20,9 @@ public class Heros extends Entite{
      */
     public Heros(int dx, int dy) {
         super(dx, dy);
+        this.possedeAmulette = false;
     }
+
+
 
 }
