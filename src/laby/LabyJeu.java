@@ -1,0 +1,62 @@
+package laby;
+
+import moteurJeu.Clavier;
+import moteurJeu.Jeu;
+
+import java.io.IOException;
+
+public class LabyJeu implements Jeu {
+	private final Labyrinthe labyrinthe;
+
+	public LabyJeu(String cheminFichier) throws IOException {
+		this.labyrinthe = new Labyrinthe(cheminFichier);
+	}
+
+	//GETTER
+
+	public Labyrinthe getLabyrinthe() {
+		return labyrinthe;
+	}
+
+	public int getLengthY() {
+		return labyrinthe.getLengthY();
+	}
+
+	public int getLength() {
+		return labyrinthe.getLength();
+	}
+
+	public boolean getMur(int x, int y) {
+		return labyrinthe.getMur(x, y);
+	}
+
+	public Heros getHeros(){
+		return labyrinthe.getHeros();
+	}
+
+	@Override
+	public void update(double secondes, Clavier clavier) {
+		if (clavier.haut) {
+			labyrinthe.deplacerPerso(Labyrinthe.HAUT);
+		}
+
+		if (clavier.bas) {
+			labyrinthe.deplacerPerso(Labyrinthe.BAS);
+		}
+
+		if (clavier.droite) {
+			labyrinthe.deplacerPerso(Labyrinthe.DROITE);
+		}
+
+		if (clavier.gauche) {
+			labyrinthe.deplacerPerso(Labyrinthe.GAUCHE);
+		}
+	}
+
+
+
+	@Override
+	public void init() {
+
+	}
+}
