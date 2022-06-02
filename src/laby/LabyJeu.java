@@ -57,6 +57,10 @@ public class LabyJeu implements Jeu {
 		if (clavier.gauche) {
 			labyrinthe.deplacerPerso(Labyrinthe.GAUCHE);
 		}
+
+		for (Monstre m : labyrinthe.getMonstres()){
+			labyrinthe.deplacerMonstre(m);
+		}
 	}
 
 
