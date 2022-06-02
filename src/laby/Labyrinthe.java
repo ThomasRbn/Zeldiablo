@@ -50,45 +50,6 @@ public class Labyrinthe {
 	// GETTER
 
 	/**
-	 * return taille selon Y
-	 *
-	 * @return nombre de lignes
-	 */
-	public int getLengthY() {
-		return murs[0].length;
-	}
-
-	/**
-	 * return taille selon X
-	 *
-	 * @return nombre de colonnes
-	 */
-	public int getLength() {
-		return murs.length;
-	}
-
-	/**
-	 * return mur en (i,j)
-	 *
-	 * @param x colonne
-	 * @param y ligne
-	 * @return vrai si c'est un mur, faux sinon
-	 */
-	public boolean getMur(int x, int y) {
-		return this.murs[x][y];
-	}
-
-	public ArrayList<Monstre> getMonstres() {
-		return monstres;
-	}
-
-	public Heros getHeros() {
-		return heros;
-	}
-
-	//CONSTRUCTEUR
-
-	/**
 	 * charge le labyrinthe
 	 *
 	 * @param nom nom du fichier de labyrinthe
@@ -155,8 +116,6 @@ public class Labyrinthe {
 		bfRead.close();
 	}
 
-	//MÉTHODES
-
 	/**
 	 * retourne la case suivante selon une actions
 	 *
@@ -186,6 +145,47 @@ public class Labyrinthe {
 	}
 
 	/**
+	 * return taille selon Y
+	 *
+	 * @return nombre de lignes
+	 */
+	public int getLengthY() {
+		return murs[0].length;
+	}
+
+	/**
+	 * return taille selon X
+	 *
+	 * @return nombre de colonnes
+	 */
+	public int getLength() {
+		return murs.length;
+	}
+
+	/**
+	 * return mur en (i,j)
+	 *
+	 * @param x colonne
+	 * @param y ligne
+	 * @return vrai si c'est un mur, faux sinon
+	 */
+	public boolean getMur(int x, int y) {
+		return this.murs[x][y];
+	}
+
+	//CONSTRUCTEUR
+
+	public ArrayList<Monstre> getMonstres() {
+		return monstres;
+	}
+
+	//MÉTHODES
+
+	public Heros getHeros() {
+		return heros;
+	}
+
+	/**
 	 * deplace le personnage en fonction de l'action.
 	 * gere la collision avec les murs
 	 *
@@ -198,8 +198,17 @@ public class Labyrinthe {
 		// calcule case suivante
 		int[] suivante = getSuivant(courante[0], courante[1], action);
 
+		boolean collision = false;
+		for (Monstre m : monstres) {
+			if (m.etrePresent(suivante[0], suivante[1])) {
+				collision = true;
+				break;
+			}
+
+		}
+
 		// si c'est pas un mur, on effectue le deplacement
-		if (!this.murs[suivante[0]][suivante[1]]) {
+		if (!this.murs[suivante[0]][suivante[1]] && !collision) {
 			this.heros.setX(suivante[0]);
 			this.heros.setY(suivante[1]);
 		}
@@ -207,9 +216,10 @@ public class Labyrinthe {
 
 	/**
 	 * Méthode qui déplace le monstre e dans une direction aléatoire
+	 *
 	 * @param e monstre à déplacer
 	 */
-	public void deplacerMonstre(Monstre e){
+	public void deplacerMonstre(Monstre e) {
 		Random random = new Random();
 		String direction = Labyrinthe.DEPLACEMENT[random.nextInt(4)];
 
