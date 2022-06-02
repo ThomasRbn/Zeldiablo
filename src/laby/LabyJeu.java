@@ -7,6 +7,8 @@ import moteurJeu.Jeu;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static laby.Constantes.CYCLE;
+
 public class LabyJeu implements Jeu {
 	private final Labyrinthe labyrinthe;
 
@@ -58,9 +60,13 @@ public class LabyJeu implements Jeu {
 			labyrinthe.deplacerPerso(Labyrinthe.GAUCHE);
 		}
 
-		for (Monstre m : labyrinthe.getMonstres()){
-			labyrinthe.deplacerMonstre(m);
+		if (CYCLE%5 == 0){
+			for (Monstre m : labyrinthe.getMonstres()){
+				labyrinthe.deplacerMonstre(m);
+			}
 		}
+
+		CYCLE++;
 	}
 
 
