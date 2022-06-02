@@ -15,7 +15,7 @@ public class Labyrinthe {
 	 * Constantes char
 	 */
 	public static final char MUR = 'X';
-	public static final char PJ = 'P';
+	public static final char HEROS = 'H';
 	public static final char VIDE = '.';
 
 	/**
@@ -80,7 +80,7 @@ public class Labyrinthe {
 					case VIDE:
 						this.murs[colonne][numeroLigne] = false;
 						break;
-					case PJ:
+					case HEROS:
 						this.murs[colonne][numeroLigne] = false;
 						this.heros = new Heros(colonne, numeroLigne);
 						break;
