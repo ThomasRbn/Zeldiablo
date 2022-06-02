@@ -4,7 +4,7 @@ public class Heros extends Entite{
 
     private boolean possedeAmulette;
 
-    public boolean isPossedeAmulette() {
+    public boolean getPossedeAmulette() {
         return possedeAmulette;
     }
 
