@@ -59,15 +59,15 @@ public class Entite {
 	}
 
 	public void attaquer(Entite e) {
-		e.setPv(pv - 1);
+		e.setPv(e.getPv() - 1);
 	}
 
-	public boolean detecterPresence(Entite e){
+	public boolean detecterPresence(Entite e) {
 		ArrayList<String> portee = new ArrayList<>();
 		String positionAutre = e.getX() + "-" + e.getY();
 
-		for (int i = this.getX() - 1; i <= this.getX() + 1; i++){
-			for (int j = this.getY() - 1; j <= this.getY() + 1; j++){
+		for (int i = this.getX() - 1; i <= this.getX() + 1; i++) {
+			for (int j = this.getY() - 1; j <= this.getY() + 1; j++) {
 				String chemin = i + "-" + j;
 				portee.add(chemin);
 			}
