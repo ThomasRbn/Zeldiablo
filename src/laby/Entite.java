@@ -1,13 +1,24 @@
 package laby;
 
+import java.util.ArrayList;
+
 public class Entite {
 
 	private int x;
 
-	private  int y;
+	private int y;
+
+	private int pv;
 
 
 	//GETTER
+
+	//CONSTRUCTEUR
+	public Entite(int x, int y, int p) {
+		this.x = x;
+		this.y = y;
+		this.pv = p;
+	}
 
 	public int getX() {
 		return x;
@@ -25,10 +36,12 @@ public class Entite {
 		this.y = y;
 	}
 
-	//CONSTRUCTEUR
-	public Entite(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public int getPv() {
+		return pv;
+	}
+
+	public void setPv(int pv) {
+		this.pv = pv;
 	}
 
 
@@ -45,6 +58,23 @@ public class Entite {
 		return (this.getX() == dx && this.getY() == dy);
 	}
 
+	public void attaquer(Entite e) {
+		e.setPv(pv - 1);
+	}
+
+	public boolean detecterPresence(Entite e){
+		ArrayList<String> portee = new ArrayList<>();
+		String positionAutre = e.getX() + "-" + e.getY();
+
+		for (int i = this.getX() - 1; i <= this.getX() + 1; i++){
+			for (int j = this.getY() - 1; j <= this.getY() + 1; j++){
+				String chemin = i + "-" + j;
+				portee.add(chemin);
+			}
+		}
+
+		return portee.contains(positionAutre);
+	}
 
 
 }

@@ -19,7 +19,7 @@ public class Heros extends Entite{
      * @param dy position selon y
      */
     public Heros(int dx, int dy) {
-        super(dx, dy);
+        super(dx, dy, 5);
         this.possedeAmulette = false;
     }
 
