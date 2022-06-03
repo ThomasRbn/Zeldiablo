@@ -86,6 +86,8 @@ public class LabyJeu implements Jeu {
 			labyrinthe.setSortieOuverte(true);
 		}
 
+		System.out.println(labyrinthe.getMonstres().get(0).detecterPresence(labyrinthe.getHeros()));
+
 		CYCLE++;
 	}
 

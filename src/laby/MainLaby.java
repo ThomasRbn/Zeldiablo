@@ -6,11 +6,8 @@ import static laby.Constantes.TAILLE;
 
 public class MainLaby {
 	public static void main(String[] args) throws Exception {
-
-
-		// creation des objets
-//		LabyJeu jeuLaby = new LabyJeu("source/laby0.txt");
-		LabyJeu jeuLaby = new LabyJeu("source/V3/labyAmulette.txt");
+		
+		LabyJeu jeuLaby = new LabyJeu("source/V4/labyAmuMonstre.txt");
 		LabyDessin dessinLaby = new LabyDessin();
 
 		int width = jeuLaby.getLength() * TAILLE;
