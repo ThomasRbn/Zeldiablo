@@ -75,20 +75,26 @@ public class LabyJeu implements Jeu {
 			labyrinthe.deplacerPerso(Labyrinthe.GAUCHE);
 		}
 
+		//Ralentissement du monstre
 		if (CYCLE % 5 == 0) {
 			for (Monstre m : labyrinthe.getMonstres()) {
 				labyrinthe.deplacerMonstre(m);
 			}
 		}
+		CYCLE++;
 
+		//Gestion ouverture sortie
 		if (labyrinthe.getHeros().etrePresent(labyrinthe.getAmulette().getX(), labyrinthe.getAmulette().getY())) {
 			labyrinthe.getHeros().setPossedeAmulette(true);
 			labyrinthe.setSortieOuverte(true);
 		}
 
-		System.out.println(labyrinthe.getMonstres().get(0).detecterPresence(labyrinthe.getHeros()));
-
-		CYCLE++;
+		//Gestion de l'attaque du monstre
+		for(Monstre m : labyrinthe.getMonstres()){
+			if (m.detecterPresence(labyrinthe.getHeros())){
+				m.attaquer(labyrinthe.getHeros());
+			}
+		}
 	}
 
 
